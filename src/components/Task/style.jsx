@@ -19,11 +19,8 @@ export const Container = styled.div`
             opacity: 0.4;
         }
     }
+    
     button:hover{
         opacity: 0.4;
     }
-    
-    
-
-   
 `;

@@ -1,8 +1,10 @@
 import { Overlay, Box, Header, Content, Footer } from './style';
-import { useState, useContext, ReactDOM } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Context } from '../../context/Context';
 
-export const Modal = ({close}) => {
+
+
+export const Modal = ({close, editing, editingTask}) => {
     const [task, setTask] = useState('');
     const {state, dispatch} = useContext(Context);
     const addTask = () => {
@@ -14,8 +16,21 @@ export const Modal = ({close}) => {
         });
         setTask('');
       }
-
-    
+      const editTask = () => {
+        dispatch({
+            type: 'EDIT_TASK',
+            payload: {
+                id: editingTask.id,
+                newTask: task
+            }
+        })
+        close();
+      }
+      useEffect(() => {
+        if(editing){
+            setTask(editingTask.task);
+        }
+      }, []);
    
     return(           
             <Overlay>
@@ -26,12 +41,15 @@ export const Modal = ({close}) => {
                     </Header>
                     <Content>
                         <input 
-                        type="text" 
-                        onChange={(e) => setTask(e.target.value)} 
-                        value={task}/>
+                            type="text" 
+                            onChange={(e) => setTask(e.target.value)} 
+                            value={task}
+                        />
                     </Content>
                     <Footer>
-                        <button onClick={addTask}>Adicionar Tarefa</button>
+                        <button onClick={editing ? editTask : addTask}>
+                            {editing ? 'Editar' : 'Adicionar Tarefa'}
+                        </button>
                         <button onClick={close}>Cancelar</button>
                     </Footer>
                 </Box>

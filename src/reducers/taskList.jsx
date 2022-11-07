@@ -27,8 +27,10 @@ export const taskListReducer = (state, action) => {
         case 'DONE_TASK':
             let item = state.find(item => item.id == action.payload.id);
             item.done = !item.done;
-            console.log(state);
         break;
+        case 'EDIT_TASK':
+            let editItem = state.find(editItem => editItem.id == action.payload.id);
+            editItem.task = action.payload.newTask;
     }
     return state;
 }  

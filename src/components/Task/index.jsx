@@ -7,6 +7,7 @@ export const Task = () => {
     const [editTask, setEditTask] = useState(false);
     const {state, dispatch} = useContext(Context);
     const {taskList} = state;
+    const [editingTask, setEditingTask] = useState('');
 
     const handleDeleteTask = (id) => {
         dispatch({
@@ -27,15 +28,20 @@ export const Task = () => {
 
     return(
         <>
-            {taskList.map((item) => (
+            {taskList.map((item, index) => (
                 <>
                     <Container key={item.id} done={item.done}>
                         <div onClick={() => handleDoneTask(item.id)}>X</div>
-                        <h2>{item.task}</h2>
-                        <button onClick={() => setEditTask(true)}>Editar</button>
+                        <h2>{item.task} -- {item.id}</h2>
+                        <button onClick={() => {
+                            setEditTask(true);
+                            setEditingTask(item);
+                            }}>Editar</button>
                         <button onClick={() => handleDeleteTask(item.id)}>Deletar</button>
                     </Container>
-                    {editTask && <Modal close={() => setEditTask(false)} editingTask={item.task}/>}
+                    {editTask && 
+                        <Modal close={() => setEditTask(false)} editing={editTask} editingTask={editingTask}/> 
+                    }
                 </>
             ))}
         </>
