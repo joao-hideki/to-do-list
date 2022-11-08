@@ -1,4 +1,4 @@
-import {Container} from './style';
+import {Container, EditingArea, DoneArea, TextArea} from './style';
 import { useContext, useState } from 'react';
 import { Context } from '../../context/Context';
 import { Modal } from '../Modal/index';
@@ -32,15 +32,17 @@ export const Task = () => {
             {taskList.map((item) => (
                 <div key={item.id}>
                     <Container  done={item.done}>
-                        <div onClick={() => handleDoneTask(item.id)}>
+                        <DoneArea onClick={() => handleDoneTask(item.id)}>
                             <FaCheck className='check-icon'/>
-                        </div>
-                        <h2>{item.task}</h2>
-                        <FaEdit className='edit-icon' onClick={() => {
-                            setEditTask(true);
-                            setEditingTask(item);
-                        }}/>
-                        <FaTrashAlt className='delete-icon' onClick={() => handleDeleteTask(item.id)}/>
+                        </DoneArea>
+                        <TextArea><h2>{item.task}</h2></TextArea>
+                        <EditingArea>
+                            <FaEdit className='edit-icon' onClick={() => {
+                                setEditTask(true);
+                                setEditingTask(item);
+                            }}/>
+                            <FaTrashAlt className='delete-icon' onClick={() => handleDeleteTask(item.id)}/>
+                        </EditingArea>
                     </Container>
                     {editTask && 
                         <Modal close={() => setEditTask(false)} editing={editTask} editingTask={editingTask}/> 
