@@ -2,6 +2,7 @@ import {Container} from './style';
 import { useContext, useState } from 'react';
 import { Context } from '../../context/Context';
 import { Modal } from '../Modal/index';
+import {FaTrashAlt, FaEdit, FaCheck} from 'react-icons/fa';
 
 export const Task = () => {
     const [editTask, setEditTask] = useState(false);
@@ -28,21 +29,23 @@ export const Task = () => {
 
     return(
         <>
-            {taskList.map((item, index) => (
-                <>
-                    <Container key={item.id} done={item.done}>
-                        <div onClick={() => handleDoneTask(item.id)}>X</div>
-                        <h2>{item.task} -- {item.id}</h2>
-                        <button onClick={() => {
+            {taskList.map((item) => (
+                <div key={item.id}>
+                    <Container  done={item.done}>
+                        <div onClick={() => handleDoneTask(item.id)}>
+                            <FaCheck/>
+                        </div>
+                        <h2>{item.task}</h2>
+                        <FaEdit onClick={() => {
                             setEditTask(true);
                             setEditingTask(item);
-                            }}>Editar</button>
-                        <button onClick={() => handleDeleteTask(item.id)}>Deletar</button>
+                        }}/>
+                        <FaTrashAlt onClick={() => handleDeleteTask(item.id)}/>
                     </Container>
                     {editTask && 
                         <Modal close={() => setEditTask(false)} editing={editTask} editingTask={editingTask}/> 
                     }
-                </>
+                </div>
             ))}
         </>
     );

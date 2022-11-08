@@ -1,6 +1,7 @@
 import { Overlay, Box, Header, Content, Footer } from './style';
 import { useState, useContext, useEffect } from 'react';
 import { Context } from '../../context/Context';
+import {FaTimes} from 'react-icons/fa';
 
 
 
@@ -36,8 +37,8 @@ export const Modal = ({close, editing, editingTask}) => {
             <Overlay>
                 <Box>
                     <Header>
-                        <h2>Confirmar</h2>
-                        <button onClick={close}>X</button>
+                        <h2>{editing ? 'Editar Tarefa' : 'Adicionar Tarefa'}</h2>
+                        <FaTimes onClick={close}/>
                     </Header>
                     <Content>
                         <input 
@@ -47,9 +48,7 @@ export const Modal = ({close, editing, editingTask}) => {
                         />
                     </Content>
                     <Footer>
-                        <button onClick={editing ? editTask : addTask}>
-                            {editing ? 'Editar' : 'Adicionar Tarefa'}
-                        </button>
+                        <button onClick={editing ? editTask : addTask}>Confirmar</button>
                         <button onClick={close}>Cancelar</button>
                     </Footer>
                 </Box>

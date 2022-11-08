@@ -11,7 +11,6 @@ export const taskListReducer = (state, action) => {
                     task: action.payload.task,
                     done: false
                 });
-                console.log(state);
                 return newState;
             } else {
                 alert('preencha o campo');
