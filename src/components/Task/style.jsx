@@ -9,8 +9,8 @@ export const Container = styled.div`
     justify-content: space-between;
     text-decoration: ${(props) => props.done ? 'line-through' : 'none'};
     opacity: ${(props) => props.done ? 0.5 : 1};
-    background-color: #e1e1e1;
-    color: #1e1e1e;
+    background-color: #1e1e1e;
+    color: #e1e1e1;
    
     div{
         border: 1px solid black;

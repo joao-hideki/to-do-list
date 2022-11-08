@@ -8,13 +8,16 @@ import { Navbar } from './components/Navbar/index';
 
 const App = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  
 
   return (
     <C.Container>
       <Navbar/>
-      <button onClick={() => setIsOpenModal(true)}>Adicionar Tarefa</button>
-      <Task openModal={setIsOpenModal}/>
-      {isOpenModal && <Modal close={() => setIsOpenModal(false)}/>}
+      <C.Content>
+        <button onClick={() => setIsOpenModal(true)}>Adicionar Tarefa</button>
+        <Task openModal={setIsOpenModal}/>
+        {isOpenModal && <Modal close={() => setIsOpenModal(false)}/>}
+      </C.Content>
     </C.Container>
   )
 }
