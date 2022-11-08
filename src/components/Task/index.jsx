@@ -32,7 +32,7 @@ export const Task = () => {
             {taskList.map((item) => (
                 <div key={item.id}>
                     <Container  done={item.done}>
-                        <div onClick={() => handleDoneTask(item.id)}>
+                        <div onClick={() => handleDoneTask(item.id)} done={item.done}>
                             <FaCheck/>
                         </div>
                         <h2>{item.task}</h2>
