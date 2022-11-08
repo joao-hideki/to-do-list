@@ -8,5 +8,6 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    gap: 7px;
 `;

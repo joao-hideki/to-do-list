@@ -5,6 +5,7 @@ import {Modal} from './components/Modal/index';
 import { Context } from './context/Context';
 import { Task } from './components/Task/index';
 import { Navbar } from './components/Navbar/index';
+import {IoMdAddCircle} from 'react-icons/io'
 
 const App = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -14,7 +15,8 @@ const App = () => {
     <C.Container>
       <Navbar/>
       <C.Content>
-        <button onClick={() => setIsOpenModal(true)}>Adicionar Tarefa</button>
+        <C.AddButton onClick={() => setIsOpenModal(true)}><IoMdAddCircle/> ADICIONAR TAREFA</C.AddButton>
+        <hr color='#DB4C3F'/>
         <Task openModal={setIsOpenModal}/>
         {isOpenModal && <Modal close={() => setIsOpenModal(false)}/>}
       </C.Content>

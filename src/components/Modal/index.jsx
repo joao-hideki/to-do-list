@@ -41,10 +41,11 @@ export const Modal = ({close, editing, editingTask}) => {
                         <FaTimes onClick={close}/>
                     </Header>
                     <Content>
-                        <input 
+                        <textarea 
                             type="text" 
                             onChange={(e) => setTask(e.target.value)} 
                             value={task}
+                            placeholder='Ex: Passear com o cachorro'
                         />
                     </Content>
                     <Footer>

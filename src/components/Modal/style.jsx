@@ -12,7 +12,10 @@ export const Overlay = styled.div`
     align-items: flex-start;
 `;
 export const Box = styled.div`
-    background-color: white;
+    background-color: black;
+    color: #e1e1e1;
+    border: 3px solid #e1e1e1;
+    
     opacity: none;
     border-radius: 0.25rem;
     width: 420px;
@@ -20,26 +23,35 @@ export const Box = styled.div`
     text-align: center;
 `;
 export const Header = styled.div`
-    border-bottom: 2px solid #eee;
+    border-bottom: 1px solid #eee;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
 
-    button{
-        appearance: none;
-        padding: 6px 1rem;
-        cursor: pointer;
-        
-
+    svg{
+        font-size: 1.3rem;
         &:hover{
-            color: blue;
+            opacity: 0.5;
+            cursor: pointer;
         }
     }
 `;
 export const Content = styled.div`
     padding: 1rem;
+    textarea{
+        outline: none;
+        border-radius: 10px;
+        width: 85%;
+        height: 80px;
+        padding: 15px;
+        resize: none;
+        font-size: 0.8rem;
+        color: #535252;
+        font-weight: bold;
+        
+    }
 `;
 export const Footer = styled.div`
     display: flex;
@@ -48,8 +60,13 @@ export const Footer = styled.div`
 
     button{
         border-radius: 10px;
-        padding: 5px 8px;
+        background-color: #1e1e1e;
+        color: #e1e1e1;
+        padding: 10px;
         cursor: pointer
+    }
+    button:hover{
+        opacity: 0.7;
     }
 
     & > button:not(:last-child) {
