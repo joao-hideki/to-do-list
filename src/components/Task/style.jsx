@@ -21,15 +21,15 @@ export const Container = styled.div`
         justify-content: center;
         border-radius: 50%;
 
-        svg{
-            display: none;
+        .check-icon{
+            display: ${(props) => props.done ? 'inline' : 'none'};
             height: 60%;
             width: 60%;
         }
         &:hover{
             opacity: 0.4;
 
-            svg{
+            .check-icon{
                 display: inline;
             }
         }
@@ -37,5 +37,9 @@ export const Container = styled.div`
 
     button:hover{
         opacity: 0.4;
+    }
+
+    .edit-icon, .delete-icon{
+        display: ${(props) => props.done ? 'none' : 'inline'};
     }
 `;

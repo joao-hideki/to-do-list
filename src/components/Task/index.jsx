@@ -32,15 +32,15 @@ export const Task = () => {
             {taskList.map((item) => (
                 <div key={item.id}>
                     <Container  done={item.done}>
-                        <div onClick={() => handleDoneTask(item.id)} done={item.done}>
-                            <FaCheck/>
+                        <div onClick={() => handleDoneTask(item.id)}>
+                            <FaCheck className='check-icon'/>
                         </div>
                         <h2>{item.task}</h2>
-                        <FaEdit onClick={() => {
+                        <FaEdit className='edit-icon' onClick={() => {
                             setEditTask(true);
                             setEditingTask(item);
                         }}/>
-                        <FaTrashAlt onClick={() => handleDeleteTask(item.id)}/>
+                        <FaTrashAlt className='delete-icon' onClick={() => handleDeleteTask(item.id)}/>
                     </Container>
                     {editTask && 
                         <Modal close={() => setEditTask(false)} editing={editTask} editingTask={editingTask}/> 
