@@ -45,7 +45,7 @@ export const Modal = ({close, editing, editingTask}) => {
                             type="text" 
                             onChange={(e) => setTask(e.target.value)} 
                             value={task}
-                            placeholder='Ex: Passear com o cachorro'
+                            placeholder={editing ? '' : 'Ex: Passear com o cachorro'}
                         />
                     </Content>
                     <Footer>
